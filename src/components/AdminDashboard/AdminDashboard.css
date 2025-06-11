@@ -1,0 +1,492 @@
+/* AdminDashboard.css - Deep Gold & Sapphire Theme */
+
+/* Define deep gold and sapphire color palette */
+:root {
+    --deep-gold: #DAA520;           /* Primary deep gold */
+    --dark-gold: #B8860B;           /* Darker shade for accents/hover */
+    --light-gold: #F0E68C;          /* Lighter shade for backgrounds/borders */
+
+    --sapphire-blue: #004B8D;       /* Primary sapphire blue - new accent */
+    --dark-sapphire: #003366;       /* Darker sapphire for hover/stronger accents */
+    --light-sapphire: #ADD8E6;      /* Light blue for subtle highlights */
+
+    --white: #ffffff;
+    --off-white: #f9f9f9;
+    --gray-text: #333333;
+    --light-gray-border: #cccccc;
+    --red-error: #dc3545;
+    --green-success: #28a745;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--off-white);
+    color: var(--gray-text);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 25px 30px;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: var(--sapphire-blue);
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    border-bottom: 3px solid var(--deep-gold);
+    padding-bottom: 15px;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--dark-sapphire);
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h2 {
+    color: var(--sapphire-blue);
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid var(--light-gold);
+    padding-bottom: 10px;
+}
+
+h3 {
+    color: var(--dark-sapphire);
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Messages */
+.message {
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    animation: slideIn 0.5s forwards;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: var(--green-success);
+    border: 1px solid #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: var(--red-error);
+    border: 1px solid #f5c6cb;
+}
+
+.loading-message {
+    text-align: center;
+    padding: 15px;
+    color: var(--sapphire-blue);
+    font-style: italic;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--light-gray-border);
+    padding-bottom: 5px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.tab-navigation button {
+    background-color: var(--light-sapphire);
+    color: var(--dark-sapphire);
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.3s ease;
+    margin: 0 5px;
+    flex-grow: 1; /* Allow buttons to grow */
+    max-width: 250px; /* Max width for each button */
+}
+
+.tab-navigation button:hover {
+    background-color: var(--sapphire-blue);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-navigation button.active {
+    background-color: var(--sapphire-blue);
+    color: var(--white);
+    border-bottom: 3px solid var(--deep-gold);
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.tab-navigation .exit-button {
+    background-color: var(--red-error);
+    color: var(--white);
+    margin-left: 20px; /* Space it out from other tabs */
+    border-radius: 8px; /* Fully rounded corners for exit button */
+    padding: 10px 20px;
+}
+
+.tab-navigation .exit-button:hover {
+    background-color: #c82333;
+    transform: translateY(-2px);
+}
+
+
+/* Forms */
+.module-form {
+    background-color: var(--off-white);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+}
+
+.form-input,
+.form-textarea {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--light-gray-border);
+    border-radius: 6px;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: var(--sapphire-blue);
+    box-shadow: 0 0 0 3px rgba(0, 75, 141, 0.2); /* Light sapphire glow */
+    outline: none;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--gray-text);
+}
+
+.form-checkbox-label input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--deep-gold); /* Native checkbox color */
+}
+
+.add-button {
+    background-color: var(--deep-gold);
+    color: var(--white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.add-button:hover {
+    background-color: var(--dark-gold);
+    transform: translateY(-1px);
+}
+
+/* Data Table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+    overflow: hidden; /* Ensures rounded corners are applied */
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--light-gray-border);
+}
+
+.data-table th {
+    background-color: var(--sapphire-blue);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: var(--off-white);
+}
+
+.data-table tr:hover {
+    background-color: var(--light-sapphire);
+}
+
+.data-table td {
+    background-color: var(--white);
+}
+
+/* Actions in table cells */
+.actions-cell {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    gap: 8px; /* Space between buttons */
+    justify-content: flex-start;
+}
+
+.actions-cell button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    white-space: nowrap; /* Prevent button text from breaking */
+}
+
+.edit-button {
+    background-color: var(--deep-gold);
+    color: var(--white);
+}
+.edit-button:hover {
+    background-color: var(--dark-gold);
+    transform: translateY(-1px);
+}
+
+.delete-button {
+    background-color: var(--red-error);
+    color: var(--white);
+}
+.delete-button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+.publish-button {
+    background-color: var(--green-success);
+    color: var(--white);
+}
+.publish-button:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.unpublish-button {
+    background-color: #ffc107; /* Orange for unpublish */
+    color: var(--gray-text);
+}
+.unpublish-button:hover {
+    background-color: #e0a800;
+    transform: translateY(-1px);
+}
+
+.assign-button {
+    background-color: var(--sapphire-blue);
+    color: var(--white);
+}
+.assign-button:hover {
+    background-color: var(--dark-sapphire);
+    transform: translateY(-1px);
+}
+
+.promote-button {
+    background-color: #17a2b8; /* Info blue for promote */
+    color: var(--white);
+}
+.promote-button:hover {
+    background-color: #138496;
+    transform: translateY(-1px);
+}
+
+.disable-button {
+    background-color: #6c757d; /* Grey for disable */
+    color: var(--white);
+}
+.disable-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+.activate-button {
+    background-color: #007bff; /* Primary blue for activate */
+    color: var(--white);
+}
+.activate-button:hover {
+    background-color: #0069d9;
+    transform: translateY(-1px);
+}
+
+.save-button {
+    background-color: var(--green-success);
+    color: var(--white);
+}
+.save-button:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.cancel-button {
+    background-color: #dc3545; /* Red for cancel */
+    color: var(--white);
+}
+.cancel-button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+.table-input,
+.table-textarea {
+    width: calc(100% - 10px); /* Adjust for padding */
+    padding: 6px;
+    border: 1px solid var(--light-gray-border);
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.user-role-admin-tag {
+    background-color: var(--dark-sapphire);
+    color: var(--white);
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    display: inline-block; /* Ensures padding and border-radius work */
+}
+
+/* Responsive Design for Tables */
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .tab-navigation button {
+        flex-basis: calc(50% - 10px); /* 2 buttons per row */
+        margin-bottom: 10px;
+    }
+
+    .tab-navigation .exit-button {
+        margin-left: 5px; /* Adjust margin for smaller screens */
+    }
+
+    .data-table {
+        border: 1px solid var(--light-gray-border);
+    }
+
+    .data-table thead {
+        display: none; /* Hide table headers on small screens */
+    }
+
+    .data-table, .data-table tbody, .data-table tr, .data-table td {
+        display: block; /* Make table elements behave like block elements */
+        width: 100%;
+    }
+
+    .data-table tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--light-gray-border);
+        border-radius: 8px;
+        background-color: var(--white);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .data-table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border: none;
+        border-bottom: 1px dashed var(--light-gray-border);
+    }
+
+    .data-table td:last-child {
+        border-bottom: none;
+    }
+
+    .data-table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: calc(50% - 30px);
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: 600;
+        color: var(--sapphire-blue);
+    }
+
+    .actions-cell {
+        justify-content: flex-end; /* Align actions to the right */
+        padding-top: 10px;
+    }
+
+    .actions-cell button {
+        width: auto; /* Buttons adjust their width */
+        flex-grow: 0; /* Don't grow */
+    }
+
+    .user-role-admin-tag {
+        margin-top: 5px;
+    }
+}
+
+/* Style for report sections */
+.reports-section .section-title {
+    color: var(--sapphire-blue);
+    font-size: 1.5em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--light-gold);
+    padding-bottom: 8px;
+}

@@ -1,0 +1,659 @@
+/* General Body and Layout */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0f2f1; /* Light green background from screenshot */
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.lecturer-dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f7f6; /* Slightly lighter background for the main container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 280px; /* Adjusted width for more space */
+    background-color: #333;
+    color: white;
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes logout button to bottom */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Ensure sidebar is on top */
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav li {
+    margin-bottom: 5px; /* Smaller gap between items */
+}
+
+.sidebar .sidebar-link {
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px; /* Increased padding */
+    display: flex;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    font-size: 1.05em; /* Slightly larger font */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebar .sidebar-link .icon {
+    margin-right: 15px; /* Space between icon and text */
+    font-size: 1.2em; /* Larger icons */
+    color: #b39ddb; /* Lighter purple for icons */
+}
+
+.sidebar .sidebar-link:hover,
+.sidebar .sidebar-link.active {
+    background-color: #555; /* Darker grey on hover/active */
+    color: #ffeb3b; /* Yellow text for active/hover state for contrast */
+}
+
+/* Logout Button */
+.logout-button {
+    background-color: #e74c3c; /* Red color */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 20px 25px; /* Consistent margin */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between icon and text */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: calc(100% - 50px); /* Adjust width considering margin */
+}
+
+.logout-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.logout-button .icon {
+    font-size: 1.2em;
+}
+
+/* Main Content Area */
+.dashboard-main-content {
+    flex-grow: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dashboard-header h1 {
+    color: #6a1b9a; /* Deep purple for main heading */
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.dashboard-content {
+    flex-grow: 1;
+}
+
+/* Notification/Message Styles */
+.message {
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    animation: fadeInOut 4s forwards; /* Animation for messages */
+}
+
+.message.success {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.message.error {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+.loading-message {
+    padding: 15px;
+    background-color: #2196F3; /* Blue */
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Section Styling */
+.dashboard-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    border-left: 6px solid #9c27b0; /* Purple left border */
+}
+
+.dashboard-section h2 {
+    color: #6a1b9a; /* Deep purple for section headings */
+    font-size: 1.8em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dashboard-section h2 .fas {
+    color: #9c27b0; /* Purple icon color */
+    font-size: 1.2em;
+}
+
+.dashboard-section h3 {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+/* Overview Section Specifics */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.overview-card {
+    background-color: #f0f8ff; /* Light bluish background for cards */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-top: 5px solid #008080; /* Teal top border for cards */
+}
+
+.overview-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.overview-card h4 {
+    color: #008080; /* Teal for card titles */
+    margin-top: 0;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.overview-card .overview-value {
+    font-size: 3.5em; /* Large number */
+    font-weight: bold;
+    color: #6a1b9a; /* Deep purple for numbers */
+    margin: 10px 0;
+}
+
+.overview-card .overview-description {
+    color: #777;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+.recent-activity-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    font-size: 0.95em;
+    color: #444;
+}
+
+.recent-activity-list li {
+    padding: 8px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+.recent-activity-list li:last-child {
+    border-bottom: none;
+}
+
+/* Forms - Add New Module */
+.course-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    flex: 1 1 calc(50% - 10px); /* Two columns, with gap consideration */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width-field {
+    flex: 1 1 100%; /* Full width for description and file upload */
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.form-input,
+.form-textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    border-color: #9c27b0; /* Purple on focus */
+    box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.2); /* Light purple glow */
+    outline: none;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* File Upload Specific Styling */
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align elements to the start */
+    gap: 10px;
+    border: 1px dashed #a0a0a0;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+}
+
+.file-upload-input {
+    display: none; /* Hide the default input */
+}
+
+.file-upload-label {
+    background-color: #008080; /* Teal button */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.file-upload-label:hover {
+    background-color: #006666; /* Darker teal on hover */
+}
+
+.file-upload-label .icon {
+    font-size: 1.1em;
+}
+
+.file-upload-info {
+    font-size: 0.9em;
+    color: #666;
+    word-break: break-all; /* Break long file names */
+}
+
+.add-course-button {
+    background-color: #9c27b0; /* Purple button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+    width: auto; /* Adjust width as needed */
+    align-self: flex-end; /* Align button to the right within the form */
+}
+
+.add-course-button:hover {
+    background-color: #7b1fa2; /* Darker purple on hover */
+    transform: translateY(-2px);
+}
+
+.add-course-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Data Table - My Modules */
+.data-table-container {
+    overflow-x: auto; /* Enable horizontal scrolling for small screens */
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.data-table th,
+.data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95em;
+    vertical-align: top; /* Align content to top for multi-line textareas */
+}
+
+.data-table th {
+    background-color: #f0f0f0;
+    color: #555;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 0.5px;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.data-table .actions-cell {
+    white-space: nowrap; /* Prevent buttons from wrapping */
+}
+
+/* Table input and textarea styling */
+.table-input {
+    width: calc(100% - 10px); /* Adjust for padding */
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+}
+
+.table-textarea {
+    width: calc(100% - 10px);
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.95em;
+    box-sizing: border-box;
+    min-height: 60px; /* Adjust as needed */
+    resize: vertical;
+}
+
+.file-upload-table-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.file-upload-label-small {
+    background-color: #5bc0de; /* Info blue for table file upload */
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85em;
+    display: inline-block; /* Allow other elements next to it */
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.file-upload-label-small:hover {
+    background-color: #31b0d5;
+}
+
+.file-name-display {
+    font-size: 0.8em;
+    color: #666;
+    word-break: break-all;
+}
+
+
+/* Action Buttons in Table */
+.edit-button,
+.delete-button,
+.save-button,
+.cancel-button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-right: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button {
+    background-color: #ffc107; /* Amber/Yellow */
+    color: #333;
+}
+.edit-button:hover {
+    background-color: #e0a800;
+    transform: translateY(-1px);
+}
+
+.delete-button {
+    background-color: #dc3545; /* Red */
+    color: white;
+}
+.delete-button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+.save-button {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+.save-button:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+}
+
+.cancel-button {
+    background-color: #6c757d; /* Gray */
+    color: white;
+}
+.cancel-button:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+}
+
+.edit-button:disabled,
+.delete-button:disabled,
+.save-button:disabled,
+.cancel-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Placeholder content for new sections */
+.placeholder-content {
+    background-color: #f0f8ff; /* Light blue background for placeholder */
+    border: 1px dashed #b3e0ff;
+    padding: 25px;
+    border-radius: 10px;
+    color: #4a6a8a;
+    font-style: italic;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+.placeholder-content ul {
+    margin-top: 15px;
+    padding-left: 25px;
+    list-style: disc; /* Use discs for list items */
+}
+
+.placeholder-content li {
+    margin-bottom: 8px;
+}
+
+
+/* Animations */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .lecturer-dashboard-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 15px 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        flex-direction: row; /* Horizontal layout for smaller screens */
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .sidebar nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sidebar nav li {
+        margin: 5px 10px;
+    }
+
+    .sidebar .sidebar-link {
+        padding: 10px 15px;
+        font-size: 0.95em;
+        text-align: center;
+        justify-content: center; /* Center content in horizontal layout */
+    }
+
+    .sidebar .sidebar-link .icon {
+        margin-right: 8px;
+    }
+
+    .logout-button {
+        margin: 10px auto; /* Center button */
+        width: auto;
+        padding: 10px 20px;
+    }
+
+    .dashboard-main-content {
+        padding: 20px;
+    }
+
+    .dashboard-header h1 {
+        font-size: 2em;
+        text-align: center;
+    }
+
+    .dashboard-section {
+        padding: 20px;
+    }
+
+    .form-group {
+        flex: 1 1 100%; /* Stack form fields vertically */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar .sidebar-link {
+        font-size: 0.9em;
+        padding: 8px 12px;
+        flex-direction: column; /* Stack icon and text */
+        gap: 5px;
+    }
+
+    .sidebar .sidebar-link .icon {
+        margin-right: 0; /* Remove horizontal margin */
+        margin-bottom: 5px; /* Add vertical margin */
+    }
+
+    .overview-grid {
+        grid-template-columns: 1fr; /* Single column for overview cards */
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 10px;
+        font-size: 0.85em;
+    }
+
+    .data-table .actions-cell {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .edit-button,
+    .delete-button,
+    .save-button,
+    .cancel-button {
+        margin-right: 0;
+        width: 100%; /* Make buttons full width in stacked layout */
+    }
+
+    .file-upload-container {
+        padding: 10px;
+    }
+    .file-upload-label {
+        font-size: 0.9em;
+        padding: 8px 15px;
+    }
+    .file-upload-info {
+        font-size: 0.8em;
+    }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
